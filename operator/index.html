@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LabuanGo Ferry Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #4f46e5;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+  </style>
+</head>
+<script>
+  function logout() {
+    // Optional: clear session/localStorage
+    // localStorage.removeItem("isLoggedIn");
+
+    window.location.href = "login.html"; // Redirect to login
+  }
+</script>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between bg-indigo-900 text-white px-5 py-3">
+    <div class="flex items-center space-x-3">
+      <svg class="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+        viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21V9a2 2 0 0 0-2-2h-4V4H8v3H4a2 2 0 0 0-2 2v12"></path><rect x="6" y="17" width="12" height="4" rx="1" ry="1"></rect></svg>
+      <span class="text-2xl font-serif font-semibold select-none">LabuanGo</span>
+    </div>
+    <button id="sidebarToggle" title="Toggle Menu" class="md:hidden text-white focus:outline-none" aria-label="Toggle Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+    <div class="flex items-center space-x-3">
+     <button onclick="logout()" title="Logout">
+  <img src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png"
+       alt="User Avatar"
+       class="w-10 h-10 rounded-full object-cover cursor-pointer hover:opacity-80 transition" />
+</button>
+
+      <span class="font-medium text-sm sm:text-base">Hi, <span class="font-semibold">Admin</span></span>
+    </div>
+  </header>
+
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="bg-indigo-900 w-64 md:w-72 min-h-screen text-indigo-100 flex-shrink-0 flex flex-col transition-transform duration-300 ease-in-out md:translate-x-0 -translate-x-full fixed md:static z-20">
+      <div class="flex-1 overflow-y-auto py-6 px-5">
+        <ul class="space-y-2">
+          <li>
+            <a href="index.html" class="flex items-center px-4 py-3 rounded-md hover:bg-indigo-700 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6"></path>
+                <path d="M13 17h8"></path>
+              </svg>
+              <span class="ml-3 font-semibold">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="ferry.html" class="flex items-center px-4 py-3 rounded-md hover:bg-indigo-700 transition-colors">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 21v-2a2 2 0 0 0-2-2h-1v-4a4 4 0 1 0-8 0v4H8a2 2 0 0 0-2 2v2H4v2h16v-2h-2zM9 13a2 2 0 1 1 4 0v4H9v-4z"/>
+              </svg>
+              <span class="ml-3">Ferries</span>
+            </a>
+          </li>
+          <li>
+            <a href="schedule.html" class="flex items-center px-4 py-3 rounded-md hover:bg-indigo-700 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M12 8c-1.104 0-2 .896-2 2v2h4v-2c0-1.104-.896-2-2-2z"></path>
+                <path d="M4 14s1.5-2 4-2 4 2 4 2"></path><circle cx="12" cy="16" r="3"></circle>
+                <path d="M16 10h2a2 2 0 0 1 2 2v4H4v-4a2 2 0 0 1 2-2h2"></path>
+              </svg>
+              <span class="ml-3">Schedule</span>
+            </a>
+          </li>
+          <li>
+            <a href="booking.html" class="flex items-center px-4 py-3 rounded-md hover:bg-indigo-700 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M21 10h-3l-1-2-2 4-2-3-3 8"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              <span class="ml-3">Bookings</span>
+            </a>
+          </li>
+          <li>
+            <a href="feedback.html" class="flex items-center px-4 py-3 rounded-md hover:bg-indigo-700 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M14 9l-2 2-2-2"></path>
+                <path d="M14 15l-2-2-2 2"></path>
+                <path d="M21 13v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <path d="M3 9v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"></path>
+              </svg>
+              <span class="ml-3">Feedback &amp; Complaints</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="px-5 pb-5 text-center text-indigo-300 text-sm select-none">&copy; 2024 LabuanGo All rights reserved</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto p-6 sm:p-10 md:ml-100">
+      <h2 class="text-xl font-semibold mb-6 text-indigo-900 select-none">Dashboard</h2>
+
+      <!-- Summary Cards -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow p-5 flex items-center space-x-4">
+          <div class="bg-blue-600 p-3 rounded-md">
+            <svg class="text-white w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M16 14c1.657 0 3-1.343 3-3s-1.343-3-3-3a3 3 0 1 0-3 3c0 1.657 1.343 3 3 3zM10 12c0-2.21-1.79-4-4-4a4 4 0 0 0 0 8c2.21 0 4-1.79 4-4zM22 19a2 2 0 0 0-2 2H4a2 2 0 0 0-2-2c0-2 4-4 10-4s10 2 10 4z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400">Customers</p>
+            <p class="font-bold text-lg text-indigo-900">1</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-5 flex items-center space-x-4">
+          <div class="bg-sky-400 p-3 rounded-md">
+            <svg class="text-white w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M2 20h20v-2H2v2zm0-4h20v-2H2v2zm0-4h20v-2H2v2zm0-4h20V6H2v2zm0-4h20V2H2v2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400">Ferries Available</p>
+            <p class="font-bold text-lg text-indigo-900">3</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-5 flex items-center space-x-4">
+          <div class="bg-green-500 p-3 rounded-md">
+            <svg class="text-white w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7 12l5-5v10l-5-5zM3 4h18v2H3V4zM3 18h18v2H3v-2z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400">Trips Scheduled</p>
+            <p class="font-bold text-lg text-indigo-900">1</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-5 flex items-center space-x-4">
+          <div class="bg-purple-700 p-3 rounded-md">
+            <svg class="text-white w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 16.2l-3.5-3.5 1.41-1.42L9 13.38l7.09-7.09 1.41 1.42z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm text-gray-400">Trip Booked</p>
+            <p class="font-bold text-lg text-indigo-900">1</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transaction History -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="col-span-1 md:col-span-1 bg-white rounded-lg shadow p-6">
+          <h3 class="font-semibold text-indigo-900 mb-4 select-none">New Customers</h3>
+          <div class="flex items-center space-x-3">
+            <img class="w-12 h-12 rounded-full bg-gray-300 p-2 object-cover" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="User Icon" />
+            <div>
+              <p class="font-semibold text-indigo-900">Nadzmie</p>
+              <p class="text-sm text-gray-500">Prototype@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-1 md:col-span-2 bg-white rounded-lg shadow p-6 overflow-x-auto">
+          <h3 class="font-semibold text-indigo-900 mb-4 select-none">Transaction History</h3>
+          <table class="min-w-full text-sm text-gray-800 border-collapse">
+            <thead>
+              <tr class="text-left text-gray-400 border-b border-gray-200">
+                <th class="py-3 px-4 uppercase tracking-wide">Payment Number</th>
+                <th class="py-3 px-4 uppercase tracking-wide">Date &amp; Time</th>
+                <th class="py-3 px-4 uppercase tracking-wide">Amount</th>
+                <th class="py-3 px-4 uppercase tracking-wide">Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr>
+                <td class="py-3 px-4 flex items-center space-x-2">
+                  <div class="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span class="font-semibold">Payment from Nadzmie</span>
+                </td>
+                <td class="py-3 px-4">2024-10-03</td>
+                <td class="py-3 px-4 font-semibold">RM 1000</td>
+                <td class="py-3 px-4">
+                  <span class="bg-green-500 text-white text-xs uppercase font-semibold px-3 py-1 rounded">Booked</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+      sidebar.classList.toggle('translate-x-0');
+    });
+  </script>
+</body>
+</html>

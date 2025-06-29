@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>LabuanGo | Ferry Ticket Booking</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&display=swap" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="lib/animate/animate.min.css" rel="stylesheet" />
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="header"></div>
+<script>
+  fetch("includes/header.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("header").innerHTML = data;
+    });
+</script>
+  <div class="header-carousel">
+    <div class="carousel slide" data-bs-interval="false" data-bs-ride="carousel" id="carouselId">
+      <ol class="carousel-indicators">
+ 
+        <li aria-label="Second slide" data-bs-slide-to="1" data-bs-target="#carouselId"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <img alt="First slide" class="img-fluid w-100" src="img/dummy-image-square.jpg" />
+          <div class="carousel-caption">
+            <div class="container py-4">
+              <div class="row g-5">
+                <div class="col-lg-6">
+                  <div class="bg-secondary rounded p-5">
+                    <h4 class="text-white mb-4">CONTINUE TICKET BOOKING</h4>
+                    <form action="trip.php" method="post" oninput="toggleReturnDate(this)">
+                      <div class="row g-3">
+                        <div class="col-12">
+                          <div class="d-flex gap-4 mb-3 text-white">
+                            <label><input type="radio" name="trip_type" value="oneway" checked> One Way</label>
+                            <label><input type="radio" name="trip_type" value="roundtrip"> Round Trip</label>
+                          </div>
+                        </div>
+                        <!-- Ticket Type -->
+                        <div class="col-12">
+                          <div class="input-group">
+                            <label class="w-100">
+                              <span class="text-white mb-2 d-block">Ticket Type</span>
+                              <select class="form-control" name="ticket_type" required>
+                                <option value="passenger">Passenger</option>
+                                <option value="motor_car">Motor Car (Sedan/Hatchback)</option>
+                                <option value="commercial_car">Commercial Car (4x4/MPV/SUV)</option>
+                                <option value="bicycle">Bicycle</option>
+                                <option value="motorcycle">Motorcycle</option>
+                                <option value="van">Van</option>
+                              </select>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                              <span class="fas fa-map-marker-alt"></span> <span class="ms-1">From Location</span>
+                            </div>
+                            <input class="form-control" list="fromCities" name="from" placeholder="Enter a City" required type="text" />
+                            <datalist id="fromCities"></datalist>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                              <span class="fas fa-map-marker-alt"></span> <span class="ms-1">To Destination</span>
+                            </div>
+                            <input class="form-control" list="toCities" name="to" placeholder="Enter a City" required type="text" />
+                            <datalist id="toCities"></datalist>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                              <span class="fas fa-calendar-alt"></span> <span class="ms-1">Departure Date</span>
+                            </div>
+                            <input class="form-control" name="date" required type="date" min="<?php echo date('Y-m-d'); ?>" />
+                          </div>
+                        </div>
+                        <div class="col-12 return-date-group" style="display: none;">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                              <span class="fas fa-calendar-alt"></span> <span class="ms-1">Return Date</span>
+                            </div>
+                            <input class="form-control" name="return_date" type="date" min="<?php echo date('Y-m-d'); ?>" />
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <button class="btn btn-light w-100 py-2" name="search" type="submit">Check Ticket</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-flex">
+                  <div class="text-start">
+                    <h1 class="display-5 text-white">Book Your Tickets & Save 15% Today!</h1>
+                    <p>Explore your destination with comfort and ease. Plan your journey now.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 (same structure as Slide 1) -->
+        <div class="carousel-item">
+          <img alt="Second slide" class="img-fluid w-100" src="img/dummy-image-square.jpg" />
+          <div class="carousel-caption">
+            <div class="container py-4">
+              <div class="row g-5">
+                <div class="col-lg-6">
+                  <div class="bg-secondary rounded p-5">
+                    <h4 class="text-white mb-4">CONTINUE TICKET BOOKING</h4>
+                    <form action="trip.php" method="post" oninput="toggleReturnDate(this)">
+                      <div class="row g-3">
+                        <div class="col-12">
+                          <div class="d-flex gap-4 mb-3 text-white">
+                            <label><input type="radio" name="trip_type" value="oneway" checked> One Way</label>
+                            <label><input type="radio" name="trip_type" value="roundtrip"> Round Trip</label>
+                          </div>
+                        </div>
+                        <!-- Ticket Type -->
+                        <div class="col-12">
+                          <div class="input-group">
+                            <label class="w-100">
+                              <span class="text-white mb-2 d-block">Ticket Type</span>
+                              <select class="form-control" name="ticket_type" required>
+                                <option value="passenger">Passenger</option>
+                                <option value="motor_car">Motor Car (Sedan/Hatchback)</option>
+                                <option value="commercial_car">Commercial Car (4x4/MPV/SUV)</option>
+                                <option value="bicycle">Bicycle</option>
+                                <option value="motorcycle">Motorcycle</option>
+                                <option value="van">Van</option>
+                              </select>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                              <span class="fas fa-map-marker-alt"></span> <span class="ms-1">From Location</span>
+                            </div>
+                            <input class="form-control" list="fromCities2" name="from" placeholder="Enter a City" required type="text" />
+                            <datalist id="fromCities2"></datalist>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                              <span class="fas fa-map-marker-alt"></span> <span class="ms-1">To Destination</span>
+                            </div>
+                            <input class="form-control" list="toCities2" name="to" placeholder="Enter a City" required type="text" />
+                            <datalist id="toCities2"></datalist>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                              <span class="fas fa-calendar-alt"></span> <span class="ms-1">Departure Date</span>
+                            </div>
+                            <input class="form-control" name="date" required type="date" min="<?php echo date('Y-m-d'); ?>" />
+                          </div>
+                        </div>
+                        <div class="col-12 return-date-group" style="display: none;">
+                          <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                              <span class="fas fa-calendar-alt"></span> <span class="ms-1">Return Date</span>
+                            </div>
+                            <input class="form-control" name="return_date" type="date" min="<?php echo date('Y-m-d'); ?>" />
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <button class="btn btn-light w-100 py-2" name="search" type="submit">Check Ticket</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-flex">
+                  <div class="text-start">
+                    <h1 class="display-5 text-white">Save 15% on Bus Tickets. Plan Your Journey Today!</h1>
+                    <p>Travel across the country with our comfortable and affordable bus services.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleReturnDate(form) {
+      const isRoundTrip = form.querySelector('input[name="trip_type"]:checked')?.value === 'roundtrip';
+      const returnGroup = form.querySelector('.return-date-group');
+      if (returnGroup) {
+        returnGroup.style.display = isRoundTrip ? 'block' : 'none';
+      }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('form').forEach(form => toggleReturnDate(form));
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+<!-- Car Steps Start -->
+<div class="container-fluid steps py-5">
+<div class="container py-5">
+<div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+<h1 class="display-5 text-capitalize text-white mb-3">Our<span class="text-primary"> Booking
+                        Process</span></h1>
+<p class="mb-0 text-white">Booking your next trip with us is simple and efficient. Follow these easy
+                    steps to get your tickets and start your journey.</p>
+</div>
+<div class="row g-4">
+<div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+<div class="steps-item p-4 mb-4">
+<h4>Select Your Destination</h4>
+<p class="mb-0">Choose your departure and destination, along with the date of travel.</p>
+<div class="steps-number">01.</div>
+</div>
+</div>
+<div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+<div class="steps-item p-4 mb-4">
+<h4>Pick Your Seat</h4>
+<p class="mb-0">Browse the available seats and select the one that best suits your needs for the
+                            journey.</p>
+<div class="steps-number">02.</div>
+</div>
+</div>
+<div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+<div class="steps-item p-4 mb-4">
+<h4>Confirm &amp; Pay</h4>
+<p class="mb-0">Finalize your booking with secure payment, and receive your ticket instantly via
+                            email or SMS.</p>
+<div class="steps-number">03.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Car Steps End -->
+
+<!-- Footer End -->
+<!-- Back to Top -->
+<a class="btn btn-secondary btn-lg-square rounded-circle back-to-top" href="#"><i class="fa fa-arrow-up"></i></a>
+<!-- JavaScript Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/counterup/counterup.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+	<!-- footer -->
+			
+<div id="footer"></div>
+<script>
+  fetch("includes/footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+</script>
+
+	<!-- footer -->
+</body>

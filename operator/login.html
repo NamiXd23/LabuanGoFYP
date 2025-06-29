@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LabuanGo Admin Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #4f46e5;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <div class="flex items-center justify-center mb-6">
+      <svg class="w-10 h-10 text-indigo-700 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+        viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21V9a2 2 0 0 0-2-2h-4V4H8v3H4a2 2 0 0 0-2 2v12"></path>
+        <rect x="6" y="17" width="12" height="4" rx="1" ry="1"/>
+      </svg>
+      <h1 class="text-2xl font-bold text-indigo-800">LabuanGo Admin</h1>
+    </div>
+
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Username</label>
+        <input type="text" id="username" class="mt-1 w-full px-4 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter username" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" class="mt-1 w-full px-4 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter password" required>
+      </div>
+      <div>
+        <button type="submit" class="w-full bg-indigo-700 hover:bg-indigo-800 text-white font-medium py-2 rounded-md">
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (username === "Admin" && password === "12345") {
+        window.location.href = "index.html"; // redirect to admin dashboard
+      } else {
+        alert("Invalid username or password!");
+      }
+    });
+  </script>
+
+</body>
+</html>
